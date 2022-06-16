@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "Confitec"
+version = "0.1.0"
+description = ""
+authors = ["Carmo-sousa <carmosousa20@outlook.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.1.2"
+dynaconf = "^3.1.9"
+python-dotenv = "^0.20.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^22.3.0"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
