@@ -1,3 +1,7 @@
 [default]
+EXTENSIONS = [
+    "confitec.ext.database",
+    "confitec.blueprints.restapi"
+]
 
 [development]

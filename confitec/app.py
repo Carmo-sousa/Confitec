@@ -2,10 +2,14 @@ from flask import Flask
 
 from confitec.ext import configuration
 
-app = Flask(__name__)
-configuration.init_app(app)
+
+def minimal_app():
+    app = Flask(__name__)
+    configuration.init_app(app)
+    return app
 
 
-@app.get("/")
-def index():
-    return "Hello, world!"
+def create_app():
+    app = minimal_app()
+    configuration.load_extensions(app)
+    return app
