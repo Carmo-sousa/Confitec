@@ -41,5 +41,7 @@ SECRET_KEY=<your_secret_key>
     docker compose up --build -d
 
 Agora é possível acessar a API do projeto no endereço: <http://localhost:5000/artists/>
+
 Buscando por um artista: <http://localhost:5000/artists/?q=Lukas%20Grahan>
+
 É possível acessar os dados em cache com o parâmetro `cache=true`
