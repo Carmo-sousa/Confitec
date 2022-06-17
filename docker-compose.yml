@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+    user: root
+
+  redis-local:
+    build:
+      context: .
+      dockerfile: docker/redis/Dockerfile
+    container_name: redis-local
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./docker/redis:/data"
+    working_dir: /data
