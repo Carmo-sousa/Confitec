@@ -20,12 +20,12 @@ def get_artists():
     if not request.args:
         return jsonify({"artists": artists.find_all()})
     artist_name = request.args["q"]
-    cache = request.args["cache"]
+    cache = request.args.get("cache", "").lower()
 
-    if cache == "False":
-        cache = False
-    else:
+    if cache == "" or cache == "true":
         cache = True
+    else:
+        cache = False
 
     songs = geniusAPI.get_songs(artist_name, cache)
     return jsonify(songs)
