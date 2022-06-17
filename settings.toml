@@ -1,7 +1,6 @@
 [default]
 EXTENSIONS = [
-    "confitec.ext.database",
-    "confitec.blueprints.restapi"
+    "confitec.blueprints.routes",
 ]
 
 [development]
