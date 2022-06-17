@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 resource = boto3.resource(
     "dynamodb",
     region_name="sa-east-1",
-    endpoint_url="http://localhost:8000",
+    endpoint_url="http://dynamodb-local:8000",
     aws_access_key_id=os.environ.get("ACCESS_KEY"),
     aws_secret_access_key=os.environ.get("SECRET_KEY"),
 )

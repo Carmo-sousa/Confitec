@@ -10,6 +10,7 @@ services:
       - "./docker/dynamodb:/home/dynamodblocal/data"
     working_dir: /home/dynamodblocal
     user: root
+    hostname: dynamodb-local
 
   redis-local:
     build:
@@ -21,3 +22,17 @@ services:
     volumes:
       - "./docker/redis:/data"
     working_dir: /data
+
+  confitec-api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: confitec-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - dynamodb-local
+      - redis-local
+    env_file:
+      - .env
