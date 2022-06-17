@@ -18,13 +18,17 @@ class GeniusAPI:
 
         if in_cache:
             songs = cache.get(artist_name.replace(" ", "-"))
-            if not songs:
-                print("Hello", flush=True)
+            if songs == None:
                 response = requests.get(
                     f"{self.BASE_API}",
                     params={"q": artist_name},
                     headers=self.headers,
                 ).json()
+
+                cache.set(
+                    artist_name.replace(" ", "-"), json.dumps(response["response"])
+                )
+
                 return response["response"]
             return json.loads(songs)
 
