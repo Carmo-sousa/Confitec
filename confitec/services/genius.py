@@ -37,6 +37,8 @@ class GeniusAPI:
         if response["meta"]["status"] == 200:
             if not artists.find_one(artist_name):
                 artists.save(artist_name)
-                cache.set(artist_name.replace(" ", "-"), json.dumps(response["response"]))
+                cache.set(
+                    artist_name.replace(" ", "-"), json.dumps(response["response"])
+                )
 
             return response["response"]

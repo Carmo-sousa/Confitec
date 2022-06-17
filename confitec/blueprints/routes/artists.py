@@ -4,8 +4,8 @@ import os
 import redis
 from flask import Blueprint, jsonify, request
 
-from confitec.services.genius import GeniusAPI
 from confitec.ext.database import Artists, resource
+from confitec.services.genius import GeniusAPI
 
 headers = {"Authorization": f"Bearer {os.environ.get('GENIUS_API_KEY')}"}
 geniusAPI = GeniusAPI(headers)
