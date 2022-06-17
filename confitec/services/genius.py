@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta
 
 import redis
 import requests
@@ -15,6 +16,7 @@ class GeniusAPI:
 
     def get_songs(self, artist_name, in_cache=True):
         artists = Artists(resource)
+        expiration_time = 7 * 86400 
 
         if in_cache:
             songs = cache.get(artist_name.replace(" ", "-"))
@@ -28,6 +30,7 @@ class GeniusAPI:
                 cache.set(
                     artist_name.replace(" ", "-"), json.dumps(response["response"])
                 )
+                cache.expire(artist_name.replace(" ", "-"), expiration_time)
 
                 return response["response"]
             return json.loads(songs)
@@ -44,5 +47,6 @@ class GeniusAPI:
                 cache.set(
                     artist_name.replace(" ", "-"), json.dumps(response["response"])
                 )
+                cache.expire(artist_name.replace(" ", "-"), expiration_time)
 
             return response["response"]
